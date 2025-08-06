@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types
 from collections import defaultdict, deque
 import asyncio
 
-API_TOKEN = "your-bot-api-token"
+API_TOKEN = "8104261349:AAFJiEaNsGWeIuM1bGErug-8l_wuViwOFPg"
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
