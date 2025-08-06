@@ -2,10 +2,13 @@ import random
 import time
 from aiogram import Bot, Dispatcher, types
 from collections import defaultdict, deque
+import asyncio
 
 API_TOKEN = "your-bot-api-token"
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
+
+# Variables for join tracking
 recent_joins = defaultdict(lambda: deque())
 JOIN_THRESHOLD = 5
 TIME_WINDOW = 10  # 10 seconds
@@ -56,8 +59,15 @@ async def handle_new_chat_members(event: types.ChatMemberUpdated):
 
 # Running the test
 async def main():
-    chat_id = 123456789  # Replace with your actual chat ID
-    num_users = 10  # Simulate 10 users joining at once
+    # Replace this with your actual public group username
+    group_username = '@helogrouo'
+
+    # Get the chat ID of the public group using its username
+    chat = await bot.get_chat(group_username)
+    chat_id = chat.id
+
+    # Simulate 10 users joining at once to test the join spam logic
+    num_users = 10
     await simulate_mass_join(chat_id, num_users)
 
 if __name__ == "__main__":
